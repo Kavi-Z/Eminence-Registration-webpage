@@ -8,9 +8,15 @@ export default function HomePage() {
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+     
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
 
     const targetDate = new Date("2025-08-01T09:00:00");
     const timer = setInterval(() => {
@@ -31,12 +37,99 @@ export default function HomePage() {
       setTimeLeft(`${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      clearTimeout(loadingTimer);
+    };
   }, []);
-
+ 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+  
   const handleRegister = () => {
     router.push("/register");
   };
+
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-content">
+          <div className="loading-logo">
+            <img src="/sources/logo.png" alt="Eminence Logo" className="loading-logo-img" />
+          </div>
+          <div className="loading-spinner">
+            <div className="spinner"></div>
+          </div>
+          <p className="loading-text">Loading Eminence 5.0...</p>
+        </div>
+        
+        <style jsx>{`
+          .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+          }
+
+          .loading-content {
+            text-align: center;
+            color: white;
+          }
+
+          .loading-logo {
+            margin-bottom: 32px;
+          }
+
+          .loading-logo-img {
+            width: 120px;
+            height: 120px;
+            filter: brightness(0) invert(1);
+          }
+
+          .loading-spinner {
+            margin-bottom: 24px;
+          }
+
+          .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+
+          .loading-text {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.9;
+            margin: 0;
+          }
+        `}</style>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -46,9 +139,8 @@ export default function HomePage() {
           rel="stylesheet"
         />
       </Head>
-
+    
       <div className="page-container">
-      
         <header className="header">
           <div className="header-content">
             <div className="header-inner">
@@ -60,7 +152,6 @@ export default function HomePage() {
                 />
               </div>
 
-           
               <nav className="desktop-nav">
                 <a href="#timeline" className="nav-link">Timeline</a>
                 <a href="#history" className="nav-link">History</a>
@@ -69,7 +160,7 @@ export default function HomePage() {
                   Register
                 </button>
               </nav>
- 
+
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="mobile-menu-btn"
@@ -81,18 +172,17 @@ export default function HomePage() {
                 ) : (
                   <svg className="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
+                </svg>
                 )}
               </button>
             </div>
 
- 
             {isMenuOpen && (
               <nav className="mobile-nav">
                 <div className="mobile-nav-content">
-                  <a href="#timeline" className="mobile-nav-link">Timeline</a>
-                  <a href="#history" className="mobile-nav-link">History</a>
-                  <a href="#contact" className="mobile-nav-link">Contact</a>
+                  <a href="#timeline" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Timeline</a>
+                  <a href="#history" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>History</a>
+                  <a href="#contact" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
                   <button onClick={handleRegister} className="mobile-register-btn">
                     Register
                   </button>
@@ -102,150 +192,147 @@ export default function HomePage() {
           </div>
         </header>
 
-  
-        <section className="hero-section">
-          <div className="hero-content">
-            <div className="hero-grid">
-              <div className="hero-text">
-                <div className="text-content">
-                  <h1 className="main-title">
-                    Be the spark of
-                    <span className="gradient-text">change!</span>
-                  </h1>
-                  <p className="subtitle">Get ready to</p>
-                  <p className="description">
-                    Join us for an extraordinary experience that will ignite innovation and transform ideas into reality.
-                  </p>
-                </div>
-                
-                <button onClick={handleRegister} className="hero-cta-btn">
-                  Register Now
-                </button>
-              </div>
+        <div className="main-content">
 
-              <div className="hero-image">
+          <section className="hero-section">
+            <div className="hero-content">
+              <div className="hero-grid">
+                <div className="hero-text">
+                  <div className="text-content">
+                    <h1 className="main-title">
+                      Be the spark of
+                      <span className="gradient-text">change!</span>
+                    </h1>
+                    <p className="subtitle">Get ready to</p>
+                    <p className="description">
+                      Join us for an extraordinary experience that will ignite innovation and transform ideas into reality.
+                    </p>
+                  </div>
+                  
+                  <button onClick={handleRegister} className="hero-cta-btn">
+                    Register Now
+                  </button>
+                </div>
+
+                <div className="hero-image">
+                  <img 
+                    src="/sources/pet.png" 
+                    alt="Eminence 5.0" 
+                    className="pet-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="countdown-section">
+            <div className="countdown-content">
+              <h2 className="section-title">Event Countdown</h2>
+              <div className="countdown-card">
+                <div className="countdown-display">{timeLeft}</div>
+                <div className="countdown-labels">
+                  <div>D</div>
+                  <div>H</div>
+                  <div>M</div>
+                  <div>S</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="timeline" className="timeline-section">
+            <div className="timeline-content">
+              <h2 className="section-title">Timeline</h2>
+              <div className="timeline-card">
                 <img 
-                  src="/sources/pet.png" 
-                  alt="Eminence 5.0" 
-                  className="pet-image"
+                  src="/sources/timeline.png" 
+                  alt="Event Timeline" 
+                  className="timeline-image"
                 />
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-       
-        <section className="countdown-section">
-          <div className="countdown-content">
-            <h2 className="section-title">Event Countdown</h2>
-            <div className="countdown-card">
-              <div className="countdown-display">{timeLeft}</div>
-              <div className="countdown-labels">
-                <div>D</div>
-                <div>H</div>
-                <div>M</div>
-                <div>S</div>
-              </div>
+          <section className="download-section">
+            <div className="download-content">
+              <h2 className="section-title-alt">Get the Details</h2>
+              <p className="download-description">
+                Download our comprehensive event booklet for complete information.
+              </p>
+              <a 
+                href="/booklet.pdf" 
+                target="_blank"
+                rel="noreferrer" 
+                className="download-btn"
+              >
+                <svg className="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download Booklet
+              </a>
             </div>
-          </div>
-        </section>
+          </section>
 
-       
-        <section id="timeline" className="timeline-section">
-          <div className="timeline-content">
-            <h2 className="section-title">Timeline</h2>
-            <div className="timeline-card">
-              <img 
-                src="/sources/timeline.png" 
-                alt="Event Timeline" 
-                className="timeline-image"
-              />
-            </div>
-          </div>
-        </section>
-
- 
-        <section className="download-section">
-          <div className="download-content">
-            <h2 className="section-title-alt">Get the Details</h2>
-            <p className="download-description">
-              Download our comprehensive event booklet for complete information.
-            </p>
-            <a 
-              href="/booklet.pdf" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="download-btn"
-            >
-              <svg className="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Download Booklet
-            </a>
-          </div>
-        </section>
-
-        {/* Past Events Section */}
-        <section id="history" className="events-section">
-          <div className="events-content">
-            <h2 className="section-title">Past Events</h2>
-            <div className="events-grid">
-              <div className="event-card">
-                <div className="event-image-container">
-                  <img 
-                    src="/sources/champ.jpg" 
-                    alt="Championship Event" 
-                    className="event-image"
-                  />
+          <section id="history" className="events-section">
+            <div className="events-content">
+              <h2 className="section-title">Past Events</h2>
+              <div className="events-grid">
+                <div className="event-card">
+                  <div className="event-image-container">
+                    <img 
+                      src="/sources/champ.jpg" 
+                      alt="Championship Event" 
+                      className="event-image"
+                    />
+                  </div>
+                  <div className="event-info">
+                    <h3 className="event-title">Championship Event</h3>
+                  </div>
                 </div>
-                <div className="event-info">
-                  <h3 className="event-title">Championship Event</h3>
+                
+                <div className="event-card">
+                  <div className="event-image-container">
+                    <img 
+                      src="/sources/b_in.jpg" 
+                      alt="Innovation Workshop" 
+                      className="event-image"
+                    />
+                  </div>
+                  <div className="event-info">
+                    <h3 className="event-title">Innovation Workshop</h3>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="event-card">
-                <div className="event-image-container">
-                  <img 
-                    src="/sources/b_in.jpg" 
-                    alt="Innovation Workshop" 
-                    className="event-image"
-                  />
-                </div>
-                <div className="event-info">
-                  <h3 className="event-title">Innovation Workshop</h3>
-                </div>
-              </div>
-              
-              <div className="event-card">
-                <div className="event-image-container">
-                  <img 
-                    src="/sources/cr.jpg" 
-                    alt="Creative Session" 
-                    className="event-image"
-                  />
-                </div>
-                <div className="event-info">
-                  <h3 className="event-title">Creative Session</h3>
+                
+                <div className="event-card">
+                  <div className="event-image-container">
+                    <img 
+                      src="/sources/cr.jpg" 
+                      alt="Creative Session" 
+                      className="event-image"
+                    />
+                  </div>
+                  <div className="event-info">
+                    <h3 className="event-title">Creative Session</h3>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Footer CTA */}
-        <section className="footer-cta">
-          <div className="footer-content">
-            <h2 className="footer-title">Ready to Join Us?</h2>
-            <p className="footer-description">
-              Don't miss out on this incredible opportunity to be part of Eminence 5.0
-            </p>
-            <button onClick={handleRegister} className="footer-cta-btn">
-              Register Now
-            </button>
-          </div>
-        </section>
+          <section className="footer-cta">
+            <div className="footer-content">
+              <h2 className="footer-title">Ready to Join Us?</h2>
+              <p className="footer-description">
+                Don't miss out on this incredible opportunity to be part of Eminence 5.0
+              </p>
+              <button onClick={handleRegister} className="footer-cta-btn">
+                Register Now
+              </button>
+            </div>
+          </section>
+        </div>
       </div>
-
+    
       <style jsx>{`
         .page-container {
           min-height: 100vh;
@@ -253,7 +340,10 @@ export default function HomePage() {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        
+        .main-content {
+          transition: filter 0.3s ease;
+        }
+
         .header {
           position: fixed;
           top: 0;
@@ -291,7 +381,7 @@ export default function HomePage() {
         }
 
         .nav-link {
-          font-size:20px;
+          font-size: 20px;
           color: #374151;
           font-weight: 500;
           text-decoration: none;
@@ -303,7 +393,7 @@ export default function HomePage() {
         }
 
         .register-btn {
-        font-size:20px;
+          font-size: 20px;
           background: #7c3aed;
           color: white;
           padding: 8px 24px;
@@ -329,6 +419,8 @@ export default function HomePage() {
           border: none;
           cursor: pointer;
           transition: color 0.2s ease;
+          position: relative;
+          z-index: 60;
         }
 
         .menu-icon {
@@ -337,22 +429,44 @@ export default function HomePage() {
         }
 
         .mobile-nav {
-          border-top: 1px solid rgba(229, 231, 235, 0.5);
-          padding: 16px 0;
+          position: fixed;
+          top: 110px;
+          left: 0;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+          z-index: 55;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         .mobile-nav-content {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 16px;
+          padding: 24px;
         }
 
         .mobile-nav-link {
           color: #374151;
           font-weight: 500;
+          font-size: 18px;
           text-decoration: none;
-          padding: 8px 0;
+          padding: 12px 0;
           transition: color 0.2s ease;
+          border-bottom: 1px solid rgba(229, 231, 235, 0.3);
         }
 
         .mobile-nav-link:hover {
@@ -366,12 +480,19 @@ export default function HomePage() {
           border: none;
           border-radius: 9999px;
           font-weight: 500;
+          font-size: 16px;
           cursor: pointer;
           transition: all 0.2s ease;
-          text-align: left;
+          box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+          margin-top: 8px;
         }
 
-        
+        .mobile-register-btn:hover {
+          background: #5b21b6;
+          box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+          transform: translateY(-1px);
+        }
+
         .hero-section {
           padding: 128px 24px 80px;
         }
@@ -406,7 +527,6 @@ export default function HomePage() {
           -webkit-text-fill-color: transparent;
           background-clip: text;
           display: block;
-          
         }
 
         .subtitle {
@@ -454,7 +574,7 @@ export default function HomePage() {
           object-fit: contain;
           filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
         }
- 
+
         .countdown-section {
           padding: 80px 24px;
           background: rgba(255, 255, 255, 0.5);
@@ -499,7 +619,7 @@ export default function HomePage() {
           text-transform: uppercase;
           letter-spacing: 8px;
         }
- 
+
         .timeline-section {
           padding: 80px 24px;
         }
@@ -523,7 +643,7 @@ export default function HomePage() {
           object-fit: contain;
           max-width: 1024px;
         }
- 
+
         .download-section {
           padding: 80px 24px;
           background: rgba(255, 255, 255, 0.5);
@@ -574,7 +694,6 @@ export default function HomePage() {
           margin-right: 8px;
         }
 
-        /* Events Section */
         .events-section {
           padding: 80px 24px;
         }
@@ -627,9 +746,9 @@ export default function HomePage() {
           color: #111827;
           margin: 0;
         }
- 
+
         .footer-cta {
-          height:380px;
+          height: 380px;
           padding: 80px 24px;
           background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
         }
@@ -646,7 +765,6 @@ export default function HomePage() {
           font-size: 64px;
           font-weight: 700;
           margin-bottom: 24px;
-           
         }
 
         .footer-description {
@@ -674,23 +792,24 @@ export default function HomePage() {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
           transform: translateY(-2px);
         }
- 
+
         @media (max-width: 768px) {
           .desktop-nav {
             display: none;
           }
-        .logo
-        {
-          width: 120px;
-          height: 120px;
-        }
+
+          .logo {
+            width: 120px;
+            height: 120px;
+          }
+
           .mobile-menu-btn {
             display: block;
           }
-            header
-            {
-            height:110px;
-            }
+
+          .header {
+            height: 110px;
+          }
 
           .hero-grid {
             grid-template-columns: 1fr;
