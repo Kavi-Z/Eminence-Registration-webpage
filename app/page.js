@@ -862,7 +862,13 @@ export default function HomePage() {
           .footer-title {
             font-size: 40px;
           }
-
+ .footer-content {
+          max-width: 1024px;
+          height: 500px;
+          margin: 0 auto;
+          text-align: center;
+          color: white;
+        }
           .countdown-display {
             font-size: 32px;
           }
