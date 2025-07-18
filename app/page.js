@@ -777,7 +777,7 @@ export default function HomePage() {
         }
 
         .footer-cta {
-          height: 380px;
+          height: 600px;
           padding: 80px 24px;
           background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
         }
