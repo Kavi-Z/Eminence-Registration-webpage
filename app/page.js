@@ -299,7 +299,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Championship Event</h3>
+                    <h3 className="event-title">Championships</h3>
                   </div>
                 </div>
                 
@@ -312,7 +312,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Innovation Workshop</h3>
+                    <h3 className="event-title">Best Innovation</h3>
                   </div>
                 </div>
                 
@@ -325,7 +325,19 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Creative Session</h3>
+                    <h3 className="event-title">Final Competition</h3>
+                  </div>
+                </div>
+                 <div className="event-card">
+                  <div className="event-image-container">
+                    <img 
+                      src="/sources/award.jpg" 
+                      alt="Creative Session" 
+                      className="event-image"
+                    />
+                  </div>
+                  <div className="event-info">
+                    <h3 className="event-title">Award for Eminence 4.0</h3>
                   </div>
                 </div>
               </div>
@@ -787,7 +799,7 @@ export default function HomePage() {
           height: 200px;
           margin: 0 auto;
           text-align: center;
-          background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+          color: white;
         }
 
         .footer-title {
