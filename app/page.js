@@ -3,7 +3,23 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Head from 'next/head';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
+export function FadeInSection({ children }) {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 export default function HomePage() {
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState("");
@@ -36,7 +52,6 @@ export default function HomePage() {
 
       setTimeLeft(`${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
     }, 1000);
-
     return () => {
       clearInterval(timer);
       clearTimeout(loadingTimer);
@@ -215,11 +230,9 @@ export default function HomePage() {
                 </div>
 
                 <div className="hero-image">
-                  <img 
-                    src="/sources/pet.png" 
-                    alt="Eminence 5.0" 
-                    className="pet-image"
-                  />
+                 <img src="/sources/pet.png" alt="Eminence 5.0" className="pet-image" />
+
+                  
                 </div>
               </div>
             </div>
@@ -569,12 +582,26 @@ export default function HomePage() {
         }
 
         .pet-image {
-          width: 100%;
-          max-width: 480px;
-          height: auto;
-          object-fit: contain;
-          filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
-        }
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+  opacity: 0;
+  transform: translateY(30px);
+  animation: imageEntrance 0.8s ease-out forwards;
+}
+
+@keyframes imageEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  }
+}
+          }
 
         .countdown-section {
           padding: 80px 24px;
@@ -606,18 +633,19 @@ export default function HomePage() {
           font-size: 64px;
           font-weight: 700;
           color: #7c3aed;
-          letter-spacing: 40px;
+          letter-spacing: 30px;
         }
 
         .countdown-labels {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 8px;
+          display: flex;
+          justify-content: center;
+          gap:163px;
           margin-top: 24px;
-          font-size: 16px;
+          font-size: 50px;
           font-weight: 500;
           color: #6b7280;
           text-transform: uppercase;
+          
           letter-spacing: 2px;
         }
 
@@ -842,7 +870,18 @@ export default function HomePage() {
           .countdown-card {
             padding: 32px 16px;
           }
-
+         .countdown-labels {
+          display: flex;
+          justify-content: center;
+          gap: 43px;
+          margin-top: 24px;
+          font-size: 16px;
+          font-weight: 500;
+          color: #6b7280;
+          text-transform: uppercase;
+          
+          letter-spacing: 2px;
+        }
           .timeline-card {
             padding: 24px;
           }
