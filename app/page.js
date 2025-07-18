@@ -787,7 +787,7 @@ export default function HomePage() {
           height: 200px;
           margin: 0 auto;
           text-align: center;
-          color: white;
+          background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
         }
 
         .footer-title {
@@ -867,7 +867,7 @@ export default function HomePage() {
           height: 0px;
           margin: 0 auto;
           text-align: center;
-          color: white;
+          background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
         }
           .countdown-display {
             font-size: 32px;
