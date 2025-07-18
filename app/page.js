@@ -440,6 +440,7 @@ export default function HomePage() {
           box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
           animation: slideDown 0.3s ease;
         }
+          
 
         @keyframes slideDown {
           from {
@@ -610,14 +611,14 @@ export default function HomePage() {
 
         .countdown-labels {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 0px;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
           margin-top: 24px;
-          font-size: 20px;
+          font-size: 16px;
           font-weight: 500;
           color: #6b7280;
           text-transform: uppercase;
-          letter-spacing: 8px;
+          letter-spacing: 2px;
         }
 
         .timeline-section {
@@ -755,7 +756,7 @@ export default function HomePage() {
 
         .footer-content {
           max-width: 1024px;
-          height: 160px;
+          height: 200px;
           margin: 0 auto;
           text-align: center;
           color: white;
@@ -835,7 +836,7 @@ export default function HomePage() {
           }
 
           .countdown-display {
-            font-size: 40px;
+            font-size: 32px;
           }
 
           .countdown-card {
@@ -853,9 +854,12 @@ export default function HomePage() {
           }
 
           .countdown-display {
-            font-size: 32px;
-            letter-spacing: 10px;
-          }
+  font-size: 28px;
+  letter-spacing: 4px;
+  word-break: break-word;
+  text-align: center;
+}
+
 
           .events-grid {
             grid-template-columns: 1fr;
