@@ -864,7 +864,7 @@ export default function HomePage() {
           }
  .footer-content {
           max-width: 1024px;
-          height: 500px;
+          height: 100px;
           margin: 0 auto;
           text-align: center;
           color: white;
