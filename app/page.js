@@ -6,6 +6,8 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import { FaFacebook, FaLinkedin } from 'react-icons/fa';
+
 export function FadeInSection({ children }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
@@ -20,6 +22,8 @@ export function FadeInSection({ children }) {
     </motion.div>
   );
 }
+
+
 export default function HomePage() {
   const router = useRouter();
   const [timeLeft, setTimeLeft] = useState("");
@@ -270,7 +274,7 @@ export default function HomePage() {
             <div className="download-content">
               <h2 className="section-title-alt">Get the Details</h2>
               <p className="download-description">
-                Download our comprehensive event booklet for complete information.
+                Download the comprehensive delegate booklet for complete information.
               </p>
               <a 
                 href="/booklet.pdf" 
@@ -288,7 +292,7 @@ export default function HomePage() {
 
           <section id="history" className="events-section">
             <div className="events-content">
-              <h2 className="section-title">Past Events</h2>
+              <h2 className="section-title">Eminence 4.0</h2>
               <div className="events-grid">
                 <div className="event-card">
                   <div className="event-image-container">
@@ -337,24 +341,36 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Award for Eminence 4.0</h3>
+                    <h3 className="event-title">Best Affinity Group Project Award</h3>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <section className="footer-cta">
-            <div className="footer-content">
-              <h2 className="footer-title">Ready to Join Us?</h2>
-              <p className="footer-description">
-                Don't miss out on this incredible opportunity to be part of Eminence 5.0
-              </p>
-              <button onClick={handleRegister} className="footer-cta-btn">
-                Register Now
-              </button>
-            </div>
-          </section>
+        <section className="footer-cta">
+  <div className="footer-content">
+    <h2 className="footer-title">Ready to Join With Us?</h2>
+    <p className="footer-description">
+      Don't miss out on this incredible opportunity to be part of Eminence 5.0
+    </p>
+    <button onClick={handleRegister} className="footer-cta-btn">
+      Register Now
+    </button>
+
+   
+<div className="footer-social-icons">
+  <a href="https://www.facebook.com/share/16bEm9hVGp/" target="_blank" rel="noopener noreferrer">
+    <FaFacebook className="footer-icon" />
+  </a>
+  <a href="https://www.linkedin.com/showcase/ieee-women-in-engineering-society-university-of-ruhuna/" target="_blank" rel="noopener noreferrer">
+    <FaLinkedin className="footer-icon" />
+  </a>
+</div>
+
+
+  </div>
+</section>
         </div>
       </div>
     
@@ -833,6 +849,33 @@ export default function HomePage() {
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
           transform: translateY(-2px);
         }
+        .footer-social-icons a {
+  color: white;  
+  margin: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;  
+  width: 48px;
+  height: 68px;
+  font-size: 1.6rem;
+ 
+  text-decoration: none;  
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer-icon {
+  font-size: 2.8rem;
+  transition: transform 0.3s ease-in-out;
+  animation: iconAppear 0.6s ease-in-out;
+}
+
+.footer-social-icons a:hover {
+  transform: scale(1.2);
+}
+
+  
+
+
 
         @media (max-width: 768px) {
           .desktop-nav {
