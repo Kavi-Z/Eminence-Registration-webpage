@@ -45,7 +45,7 @@ export default function TeamRegister() {
     const submissionData = { ...formData, members: filteredMembers };
 
     try {
-      const res = await fetch("PASTE_YOUR_SCRIPT_URL_HERE", {
+      const res = await fetch(" ", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export default function TeamRegister() {
       const result = await res.json();
 
       if (result.result === "Success") {
-        setStatus("✅ Team registered successfully!");
+        setStatus("Team registered successfully!");
         setFormData({
           teamName: "",
           leaderName: "",
@@ -65,10 +65,10 @@ export default function TeamRegister() {
           members: ["", "", ""],
         });
       } else {
-        setStatus("❌ Registration failed. Please try again.");
+        setStatus("Registration failed. Please try again.");
       }
     } catch {
-      setStatus("❌ Registration failed. Please try again.");
+      setStatus("Registration failed. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

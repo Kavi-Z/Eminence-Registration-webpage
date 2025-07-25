@@ -73,10 +73,9 @@ export default function HomePage() {
       document.body.style.overflow = 'unset';
     };
   }, [isMenuOpen]);
-  
-  const handleRegister = () => {
-    router.push("/register");
-  };
+const handleRegister = () => {
+  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdYg7dxU2CpqEHDX826S8LRb_GYwRIFwLBnTlJEYE8Ge-PvjA/viewform?usp=dialog";
+};
 
   if (isLoading) {
     return (
@@ -242,6 +241,28 @@ export default function HomePage() {
             </div>
           </section>
 
+<section className="about-eminence">
+  <div className="about-container">
+    <div className="about-left">
+      <h2 className="left-title">What is Eminence?</h2>
+    </div>
+
+
+    <div className="about-right">
+       
+      <p className="description">
+        Eminence 5.0 is a premier event organized by the&nbsp;
+        <span className="gradient-text">IEEE Student Branch</span> 
+        <span className="mid-text">
+          &nbsp;of the University of Ruhuna. This event brings together innovators, engineers, and tech enthusiasts to celebrate technology, creativity, and excellence.
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
           <section className="countdown-section">
             <div className="countdown-content">
               <h2 className="section-title">Event Countdown</h2>
@@ -310,29 +331,46 @@ export default function HomePage() {
                 <div className="event-card">
                   <div className="event-image-container">
                     <img 
-                      src="/sources/b_in.jpg" 
+                      src="/sources/1str.jpg" 
                       alt="Innovation Workshop" 
                       className="event-image"
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Best Innovation</h3>
+                    <h3 className="event-title">1ˢᵗ Runner Up</h3>
                   </div>
                 </div>
                 
                 <div className="event-card">
                   <div className="event-image-container">
                     <img 
-                      src="/sources/cr.jpg" 
+                      src="/sources/2ndr.jpg" 
                       alt="Creative Session" 
                       className="event-image"
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Final Competition</h3>
+                    <h3 className="event-title">2ⁿᵈ Runner Up</h3>
                   </div>
                 </div>
+                
                  <div className="event-card">
+                  <div className="event-image-container">
+                    <img 
+                      src="/sources/b_in.jpg" 
+                      alt="Creative Session" 
+                      className="event-image"
+                    />
+                  </div>
+                  <div className="event-info">
+                    <h3 className="event-title">Best Innovation</h3>
+                  </div>
+
+                
+
+                </div>
+
+                  <div className="event-card">
                   <div className="event-image-container">
                     <img 
                       src="/sources/award.jpg" 
@@ -343,6 +381,25 @@ export default function HomePage() {
                   <div className="event-info">
                     <h3 className="event-title">Best Affinity Group Project Award</h3>
                   </div>
+
+                
+
+                </div>
+                
+                 <div className="event-card">
+                  <div className="event-image-container">
+                    <img 
+                      src="/sources/emi23.jpg" 
+                      alt="Creative Session" 
+                      className="event-image"
+                    />
+                  </div>
+                  <div className="event-info">
+                    <h3 className="event-title">The DARREL CHONG Student Activity Bronze Award</h3>
+                  </div>
+
+                
+
                 </div>
               </div>
             </div>
@@ -428,7 +485,7 @@ export default function HomePage() {
           text-decoration: none;
           transition: color 0.2s ease;
         }
-
+         
         .nav-link:hover {
           color: #7c3aed;
         }
@@ -468,6 +525,95 @@ export default function HomePage() {
           width: 24px;
           height: 24px;
         }
+        :root {
+  --bg-light: #f9fafb;
+  --text-main: #1f2937;
+  --text-sub: #374151;
+  --gradient-start: #6366f1;
+  --gradient-end: #a855f7;
+  --max-width: 800px;
+  --padding-section: 4rem 1.5rem;
+  --font-main: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.about-eminence {
+  background-color: var(--bg-light);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  font-family: var(--font-main);
+  padding: var(--padding-section);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding-top: 1rem;
+  padding-bottom: 10rem;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1000px;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.about-left,
+.about-right {
+  flex: 1;
+}
+
+.left-title {
+   font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.description {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.description {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.8;
+  color: var(--text-sub);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
 
         .mobile-nav {
           position: fixed;
@@ -857,7 +1003,7 @@ export default function HomePage() {
   justify-content: center;  
   width: 48px;
   height: 68px;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
  
   text-decoration: none;  
   transition: transform 0.3s ease-in-out;
@@ -881,6 +1027,20 @@ export default function HomePage() {
           .desktop-nav {
             display: none;
           }
+            .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+    .description {
+      max-width: 65%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+  .about-left,
+  .about-right {
+    width: 100%;
+  }
 
           .logo {
             width: 120px;
