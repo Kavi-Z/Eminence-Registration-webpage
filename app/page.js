@@ -105,6 +105,7 @@ const handleRegister = () => {
           }
 
           .loading-content {
+          font-family: 'Inter', sans-serif;
             text-align: center;
             color: white;
           }
@@ -222,7 +223,7 @@ const handleRegister = () => {
                       <span className="gradient-text">change!</span>
                     </h1>
                     <p className="subtitle">Get ready to</p>
-                    <p className="description">
+                    <p className="description1">
                       Join us for an extraordinary experience that will ignite innovation and transform ideas into reality.
                     </p>
                   </div>
@@ -252,9 +253,9 @@ const handleRegister = () => {
        
       <p className="description">
         Eminence 5.0 is a premier event organized by the&nbsp;
-        <span className="gradient-text">IEEE Student Branch</span> 
+        <span className="gradient-text">WIE Affinity Group of IEEE Student Branch University of Ruhuna. </span> 
         <span className="mid-text">
-          &nbsp;of the University of Ruhuna. This event brings together innovators, engineers, and tech enthusiasts to celebrate technology, creativity, and excellence.
+          &nbsp;This event brings together innovators, engineers, and tech enthusiasts to celebrate technology, creativity, and excellence.
         </span>
       </p>
     </div>
@@ -324,7 +325,7 @@ const handleRegister = () => {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Championships</h3>
+                    <h3 className="event-title">Champions</h3>
                   </div>
                 </div>
                 
@@ -435,7 +436,8 @@ const handleRegister = () => {
         .page-container {
           min-height: 100vh;
           background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          // font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+             font-family: 'Lemonmilk', sans-serif;
         }
 
         .main-content {
@@ -555,9 +557,10 @@ const handleRegister = () => {
 .about-container {
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 5rem;
   width: 100%;
   max-width: 1000px;
+  
   align-items: center;
   justify-content: space-between;
   
@@ -566,6 +569,7 @@ const handleRegister = () => {
 .about-left,
 .about-right {
   flex: 1;
+ 
 }
 
 .left-title {
@@ -585,6 +589,7 @@ const handleRegister = () => {
   max-width: 1024px;
   margin: 0 auto;
   text-align: left;
+  
 }
 
 .gradient-text {
@@ -603,9 +608,13 @@ const handleRegister = () => {
 }
 
 .description {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  line-height: 1.8;
-  color: var(--text-sub);
+font-size: 20px;
+          color: #6b7280;
+          max-width: 900px;
+          margin-bottom: 32px;
+          line-height: 1.6;
+          padding-left: 190px;
+          text-align: center;
 }
 
 .gradient-text {
@@ -724,10 +733,10 @@ const handleRegister = () => {
           margin-bottom: 16px;
         }
 
-        .description {
+        .description1 {
           font-size: 18px;
           color: #6b7280;
-          max-width: 480px;
+          max-width: 610px;
           line-height: 1.6;
         }
 
@@ -803,7 +812,8 @@ const handleRegister = () => {
         }
 
         .countdown-display {
-          font-family: 'JetBrains Mono', monospace;
+          // font-family: 'JetBrains Mono', monospace;
+          font-family: 'Lemonmilk', sans-serif;
           font-size: 64px;
           font-weight: 700;
           color: #7c3aed;
@@ -946,6 +956,7 @@ const handleRegister = () => {
 
         .event-title {
           font-weight: 600;
+          text-align: center;
           color: #111827;
           margin: 0;
         }
@@ -1040,6 +1051,7 @@ const handleRegister = () => {
   .about-left,
   .about-right {
     width: 100%;
+    
   }
 
           .logo {
