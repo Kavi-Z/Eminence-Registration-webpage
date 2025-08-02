@@ -406,7 +406,41 @@ const handleRegister = () => {
             </div>
           </section>
 
+<section className="More-detais">
+  <div className="more-details-content">
+    <h2 className="section-title">More Details</h2>
+    <p className="description">
+      For more information about Eminence 5.0, please contact 
+    </p>
+
+    <div className="contacts-grid">
+      <div className="contact-item">
+        <h3 className="gradient-text">Subhani Harshani</h3>
+        <p>(CO-Chair)</p>
+        <h2>077 930 7650</h2>
+      </div>
+      <div className="contact-item">
+        <h3 className="gradient-text">Subhani Harshani</h3>
+           <p>(CO-Chair)</p>
+        <h2>077 930 7650</h2>
+      </div>
+      <div className="contact-item">
+        <h3 className="gradient-text">Subhani Harshani</h3>
+           <p>(Program Team Lead)</p>
+        <h2>077 930 7650</h2>
+      </div>
+      <div className="contact-item">
+        <h3 className="gradient-text">Subhani Harshani</h3>
+           <p>(Program Team Member)</p>
+        <h2>077 930 7650</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
         <section className="footer-cta">
+        
   <div className="footer-content">
     <h2 className="footer-title">Ready to Join With Us?</h2>
     <p className="footer-description">
@@ -958,6 +992,57 @@ font-size: 20px;
           color: #111827;
           margin: 0;
         }
+
+        .More-detais {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.more-details-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #6b7280;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+ 
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 600px;
+}
+ 
+@media (max-width: 600px) {
+  .contacts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+ 
+.contact-item h2 {
+  margin-top: 4px;
+  font-weight: 500;
+  color: #374151;
+}
+
+          
 
         .footer-cta {
           height: 500px;
