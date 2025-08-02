@@ -38,7 +38,7 @@ export default function HomePage() {
       setIsLoading(false);
     }, 2000);
 
-    const targetDate = new Date("2025-08-01T09:00:00");
+    const targetDate = new Date("2025-08-05T09:00:00");
     const timer = setInterval(() => {
       const now = new Date();
       const distance = targetDate - now;
@@ -572,6 +572,7 @@ const handleRegister = () => {
  
 }
 
+
 .left-title {
    font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
@@ -585,12 +586,8 @@ const handleRegister = () => {
   margin-bottom: 1rem;
 }
 
-.description {
-  max-width: 1024px;
-  margin: 0 auto;
-  text-align: left;
-  
-}
+
+
 
 .gradient-text {
   background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
@@ -610,10 +607,11 @@ const handleRegister = () => {
 .description {
 font-size: 20px;
           color: #6b7280;
-          max-width: 900px;
+          max-width: 2048px;
           margin-bottom: 32px;
           line-height: 1.6;
-          padding-left: 190px;
+          padding-left: 2px;
+          left: 10px;
           text-align: center;
 }
 
@@ -1013,7 +1011,7 @@ font-size: 20px;
   align-items: center;
   justify-content: center;  
   width: 48px;
-  height: 68px;
+  height: 78px;
   font-size: 1.9rem;
  
   text-decoration: none;  
@@ -1042,12 +1040,7 @@ font-size: 20px;
     flex-direction: column;
     text-align: center;
   }
-    .description {
-      max-width: 65%;
-      margin: 0 auto;
-      text-align: center;
-    }
-
+  
   .about-left,
   .about-right {
     width: 100%;
