@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Head from 'next/head';
 import { motion } from 'framer-motion';
@@ -29,6 +29,52 @@ export default function HomePage() {
   const [timeLeft, setTimeLeft] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isWhyOpen, setIsWhyOpen] = useState(false);
+  const contentRef = useRef(null);
+ 
+const questions = [
+  {
+    id: 'why',
+    title: 'Why Eminence?',
+    content: 'Eminence 5.0 is a unique opportunity for students to showcase their innovative ideas and collaborate with industry professionals.'
+  },
+  {
+    id: 'what',
+    title: 'What is Eminence 5.0?',
+    content: 'Eminence 5.0 is an annual tech conference and competition that brings together students, professionals, and industry leaders to explore cutting-edge technologies and innovations.'
+  },
+  {
+    id: 'who',
+    title: 'Who can participate?',
+    content: 'Students from all universities and colleges are welcome to participate. Whether you\'re a beginner or an expert, there\'s something for everyone at Eminence 5.0.'
+  },
+  {
+    id: 'when',
+    title: 'When is the event?',
+    content: 'Eminence 5.0 will be held over three days in March 2024. Specific dates and schedule will be announced soon.'
+  }
+];
+
+
+const [openQuestions, setOpenQuestions] = useState({});
+const toggleQuestion = (questionId) => {
+  setOpenQuestions(prev => ({
+    ...prev,
+    [questionId]: !prev[questionId]
+  }));
+};
+
+  useEffect(() => {
+    if (contentRef.current) {
+      if (isWhyOpen) {
+        contentRef.current.style.maxHeight = contentRef.current.scrollHeight + "px";
+        contentRef.current.style.opacity = "1";
+      } else {
+        contentRef.current.style.maxHeight = "0px";
+        contentRef.current.style.opacity = "0";
+      }
+    }
+  }, [isWhyOpen]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -223,7 +269,7 @@ const handleRegister = () => {
                       <span className="gradient-text">change!</span>
                     </h1>
                     <p className="subtitle">Get ready to</p>
-                    <p className="description1">
+                    <p className="description_head">
                       Join us for an extraordinary experience that will ignite innovation and transform ideas into reality.
                     </p>
                   </div>
@@ -262,20 +308,53 @@ const handleRegister = () => {
   </div>
 </section>
 
+<section className="faq-section">
+  {questions.map((question) => {
+    const isOpen = openQuestions[question.id];
+    
+    return (
+      <div key={question.id} className="faq-container">
+        <div
+          className="question-header"
+          onClick={() => toggleQuestion(question.id)}
+        >
+          <h2 className="question-title">
+            {question.title}
+          </h2>
+          <span className={`dropdown-arrow ${isOpen ? 'open' : ''}`}>
+            ▼
+          </span>
+        </div>
+
+        <div className={`dropdown-content ${isOpen ? 'open' : 'closed'}`}>
+          <p className={`question-description ${isOpen ? 'open' : 'closed'}`}>
+            {question.content}
+          </p>
+        </div>
+      </div>
+    );
+  })}
+</section>
+
+
+
+
 
 
           <section className="countdown-section">
             <div className="countdown-content">
               <h2 className="section-title">Event Countdown</h2>
               <div className="countdown-card">
-                <div className="countdown-display">{timeLeft}</div>
-                <div className="countdown-labels">
-                  <div>D</div>
-                  <div>H</div>
-                  <div>M</div>
-                  <div>S</div>
-                </div>
-              </div>
+              <div className="countdown-timer-wrapper">
+  <div className="countdown-display">{timeLeft}</div>
+  <div className="countdown-labels">
+    <div>D</div>
+    <div>H</div>
+    <div>M</div>
+    <div>S</div>
+  </div>
+</div>
+            </div>
             </div>
           </section>
 
@@ -415,24 +494,24 @@ const handleRegister = () => {
 
     <div className="contacts-grid">
       <div className="contact-item">
-        <h3 className="gradient-text">Subhani Harshani</h3>
+        <h3 className="gradient-text">Subhani Harshani</h3> 
         <p>(CO-Chair)</p>
         <h2>077 930 7650</h2>
       </div>
       <div className="contact-item">
-        <h3 className="gradient-text">Subhani Harshani</h3>
+        <h3 className="gradient-text">Punsara Sewwandi</h3>
            <p>(CO-Chair)</p>
-        <h2>077 930 7650</h2>
+        <h2>076 296 5008</h2>
       </div>
       <div className="contact-item">
-        <h3 className="gradient-text">Subhani Harshani</h3>
+        <h3 className="gradient-text">Thanujaya Thennakoon</h3>
            <p>(Program Team Lead)</p>
-        <h2>077 930 7650</h2>
+        <h2>076 325 3332</h2>
       </div>
       <div className="contact-item">
-        <h3 className="gradient-text">Subhani Harshani</h3>
+        <h3 className="gradient-text">Sanjana Wijesooriya</h3>
            <p>(Program Team Member)</p>
-        <h2>077 930 7650</h2>
+        <h2>074 051 3430</h2>
       </div>
     </div>
   </div>
@@ -467,6 +546,7 @@ const handleRegister = () => {
       </div>
     
       <style jsx>{`
+      
         .page-container {
           min-height: 100vh;
           background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
@@ -585,15 +665,22 @@ const handleRegister = () => {
   align-items: center;
   height: auto;
   padding-top: 1rem;
-  padding-bottom: 10rem;
+  padding-bottom: 1rem;
 }
+  .description_head
+  {
+    font-size: 15px;
+    color: #6b7280;
+    max-width: 800px;
+  }
 
 .about-container {
   display: flex;
   flex-direction: row;
+  padding: 0 1.5rem;
   gap: 5rem;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   
   align-items: center;
   justify-content: space-between;
@@ -655,7 +742,121 @@ font-size: 20px;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
 }
+ 
+.faq-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 1rem;
+}
 
+.faq-container {
+  margin-bottom: 1rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+  justify-content: center;
+  padding: 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  
+}
+
+ 
+.question-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+  font-size: 20px;
+  color: #666;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+}
+
+.dropdown-content.closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.dropdown-content.open {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.question-description {
+  margin: 1rem 0 0 0;
+  padding: 0.5rem 1rem;
+  transition: transform 0.3s ease;
+  text-align: center;
+  color: #555;
+  line-height: 1.6;
+}
+
+.question-description.closed {
+  transform: translateY(-10px);
+}
+
+.question-description.open {
+  transform: translateY(0);
+}
+ 
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 1rem 0.5rem;
+  }
+  
+  .question-header {
+    padding: 0.8rem;
+  }
+  
+  .question-title {
+    font-size: 1.1rem;
+  }
+  
+  .faq-container {
+    max-width: 100%;
+  }
+}
+ 
+.question-header:active {
+  transform: translateY(1px);
+}
+
+.dropdown-content.open {
+  animation: slideDown 0.4s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 200px;
+    opacity: 1;
+  }
+}
         .mobile-nav {
           position: fixed;
           top: 110px;
@@ -721,7 +922,15 @@ font-size: 20px;
           box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
           transform: translateY(-1px);
         }
+          .Question-section {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+ 
         .hero-section {
           padding: 128px 24px 80px;
         }
@@ -818,16 +1027,18 @@ font-size: 20px;
 }
           }
 
-        .countdown-section {
-          padding: 80px 24px;
-          background: rgba(255, 255, 255, 0.5);
-        }
+      .countdown-section {
+  padding: 80px 24px;
+  background: rgba(255, 255, 255, 0.5);
+}
 
-        .countdown-content {
-          max-width: 1024px;
-          margin: 0 auto;
-          text-align: center;
-        }
+.countdown-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
 
         .section-title {
           font-size: 48px;
@@ -836,34 +1047,51 @@ font-size: 20px;
           margin-bottom: 48px;
         }
 
-        .countdown-card {
-          background: white;
-          border-radius: 16px;
-          padding: 48px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+.countdown-card {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(60px, 1fr));
+  justify-content: center;
+  text-align: center;
+  row-gap: 8px;
+  column-gap: 0px; 
+  padding: 48px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
 
-        .countdown-display {
-          // font-family: 'JetBrains Mono', monospace;
-          font-family: 'Lemonmilk', sans-serif;
-          font-size: 64px;
-          font-weight: 700;
-          color: #7c3aed;
-          letter-spacing: 30px;
-        }
+.countdown-timer-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center;
+  gap: 60px;
+  font-family: 'Lemonmilk', sans-serif;
+}
+     .countdown-display {
+  grid-column: 1 / 5;
+  font-size: 64px;
+  font-weight: 700;
+  color: #7c3aed;
+  letter-spacing: 10px;  
+  text-align: center;
+}
 
-        .countdown-labels {
-          display: flex;
-          justify-content: center;
-          gap:163px;
-          margin-top: 24px;
-          font-size: 50px;
-          font-weight: 500;
-          color: #6b7280;
-          text-transform: uppercase;
-          
-          letter-spacing: 2px;
-        }
+.countdown-labels {
+  display: contents;  
+  position: relative; 
+  margin-top: 8px;
+}
+.countdown-labels > div {
+  grid-column: auto;
+  justify-self: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  
+}
 
         .timeline-section {
           padding: 80px 24px;
@@ -1026,7 +1254,7 @@ font-size: 20px;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
 }
  
 @media (max-width: 600px) {
@@ -1037,6 +1265,7 @@ font-size: 20px;
 
  
 .contact-item h2 {
+  font-size: 1.5rem;
   margin-top: 4px;
   font-weight: 500;
   color: #374151;
@@ -1098,7 +1327,6 @@ font-size: 20px;
   width: 48px;
   height: 78px;
   font-size: 1.9rem;
- 
   text-decoration: none;  
   transition: transform 0.3s ease-in-out;
 }
@@ -1112,9 +1340,6 @@ font-size: 20px;
 .footer-social-icons a:hover {
   transform: scale(1.2);
 }
-
-  
-
 
 
         @media (max-width: 768px) {
@@ -1174,25 +1399,31 @@ font-size: 20px;
           text-align: center;
           color: white;
         }
-          .countdown-display {
-            font-size: 32px;
-          }
+            .countdown-display {
+  grid-column: 1 / 5;
+  font-size: 30px;
+  font-weight: 700;
+  color: #7c3aed;
+  letter-spacing: 8px;  
+  text-align: center;
+}
+           
 
           .countdown-card {
             padding: 32px 16px;
+
           }
-         .countdown-labels {
-          display: flex;
-          justify-content: center;
-          gap: 43px;
-          margin-top: 24px;
-          font-size: 16px;
-          font-weight: 500;
-          color: #6b7280;
-          text-transform: uppercase;
-          
-          letter-spacing: 2px;
-        }
+         
+ 
+         .countdown-card {
+   grid-column: 1 / 5;
+  font-size: 64px;
+  font-weight: 700;
+  color: #7c3aed;
+  letter-spacing: 10px;  
+  text-align: center;
+}
+     
           .timeline-card {
             padding: 24px;
           }
@@ -1203,12 +1434,6 @@ font-size: 20px;
             font-size: 32px;
           }
 
-          .countdown-display {
-  font-size: 28px;
-  letter-spacing: 4px;
-  word-break: break-word;
-  text-align: center;
-}
 
 
           .events-grid {
@@ -1223,6 +1448,7 @@ font-size: 20px;
         }
         
         html, body {
+        
           margin: 0;
           padding: 0;
           scroll-behavior: smooth;
