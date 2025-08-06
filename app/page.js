@@ -249,7 +249,7 @@ const handleRegister = () => {
                 <div className="mobile-nav-content">
                   <a href="#timeline" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Timeline</a>
                   <a href="#history" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>History</a>
-                  <a href="#Contact" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
+                  <a href="#contact" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
                   <button onClick={handleRegister} className="mobile-register-btn">
                     Register
                   </button>
