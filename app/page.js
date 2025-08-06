@@ -1,4 +1,5 @@
 "use client";
+//aug 9  aug 23   sep13
 
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -36,22 +37,23 @@ const questions = [
   {
     id: 'why',
     title: 'Why Eminence?',
-    content: 'Eminence 5.0 is a unique opportunity for students to showcase their innovative ideas and collaborate with industry professionals.'
+    content: 'Eminence 5.0 is an engaging event designed to expand students knowledge across diverse domains such as Telecommunication Engineering, Electrical Engineering, Artificial Intelligence, and more. It provides a vibrant platform for exploring emerging technologies, sharing ideas, and deepening understanding through interactive sessions and activities.'
   },
-  {
-    id: 'what',
-    title: 'What is Eminence 5.0?',
-    content: 'Eminence 5.0 is an annual tech conference and competition that brings together students, professionals, and industry leaders to explore cutting-edge technologies and innovations.'
-  },
+ 
   {
     id: 'who',
     title: 'Who can participate?',
     content: 'Students from all universities and colleges are welcome to participate. Whether you\'re a beginner or an expert, there\'s something for everyone at Eminence 5.0.'
   },
+   {
+    id: 'what',
+    title: 'What is the context of Eminence 5.0?',
+    content: 'Eminence 5.0 is a multi-phase event where participants attend three curated webinars and then apply their insights to complete a dedicated task. The final event showcases these outcomes, giving participants a platform to present their ideas and creativity.'
+  },
   {
     id: 'when',
     title: 'When is the event?',
-    content: 'Eminence 5.0 will be held over three days in March 2024. Specific dates and schedule will be announced soon.'
+    content: 'Eminence 5.0 will be held on 4th week of September. Specific dates and schedule will be announced soon.'
   }
 ];
 
@@ -84,7 +86,7 @@ const toggleQuestion = (questionId) => {
       setIsLoading(false);
     }, 2000);
 
-    const targetDate = new Date("2025-08-05T09:00:00");
+    const targetDate = new Date("2025-08-20T09:00:00");
     const timer = setInterval(() => {
       const now = new Date();
       const distance = targetDate - now;
@@ -247,7 +249,7 @@ const handleRegister = () => {
                 <div className="mobile-nav-content">
                   <a href="#timeline" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Timeline</a>
                   <a href="#history" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>History</a>
-                  <a href="#contact" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
+                  <a href="#Contact" className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
                   <button onClick={handleRegister} className="mobile-register-btn">
                     Register
                   </button>
@@ -358,18 +360,52 @@ const handleRegister = () => {
             </div>
           </section>
 
-          <section id="timeline" className="timeline-section">
-            <div className="timeline-content">
-              <h2 className="section-title">Timeline</h2>
-              <div className="timeline-card">
-                <img 
-                  src="/sources/timeline.png" 
-                  alt="Event Timeline" 
-                  className="timeline-image"
-                />
-              </div>
-            </div>
-          </section>
+    <section id="timeline" className="timeline-section">
+  <div className="timeline-content">
+    <h2 className="section-title2">Timeline</h2>
+    <div className="timeline-grid">
+      {[
+        { title: '01.Awareness Session', date: 'Aug 09' },
+        {},
+        {},
+        { title: '02.Registration Opens', date: 'Aug 12' },
+        { title: '03.Webinar 1 (Packet Tracer)', date: 'Aug 23' },
+        {},
+        {},
+        { title: '04.Webinar 2 (MATLAB)', date: 'Sep 13' },
+        { title: '05.Webinar 3 (AI)', date: 'Sep 3rd week' },
+        {},
+        {},
+        { title: '06.Registration (Competition)', date: 'Sep 3rd week' },
+        { title: '07.Proposals Submissions', date: 'Sep 3rd week' },
+        {},
+        {},
+        { title: '08.Main Event', date: 'Sep 4th week' }
+      ].map((event, index) => {
+        const isVisible = event.title && event.title.trim() !== '';
+        return (
+          <div
+            key={index}
+            className={`timeline-box ${index % 2 === 0 ? 'col-1' : 'col-2'} ${
+              !isVisible ? 'invisible-box' : ''
+            }`}
+          >
+            {isVisible && (
+              <>
+                <div className="event-title">{event.title}</div>
+                {event.date && <div className="event-date">{event.date}</div>}
+              </>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+
+
+
 
           <section className="download-section">
             <div className="download-content">
@@ -404,7 +440,7 @@ const handleRegister = () => {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Champions</h3>
+                    <h3 className="event-title2">Champions</h3>
                   </div>
                 </div>
                 
@@ -417,7 +453,7 @@ const handleRegister = () => {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">1ˢᵗ Runner Up</h3>
+                    <h3 className="event-title2">1ˢᵗ Runner Up</h3>
                   </div>
                 </div>
                 
@@ -430,7 +466,7 @@ const handleRegister = () => {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">2ⁿᵈ Runner Up</h3>
+                    <h3 className="event-title2">2ⁿᵈ Runner Up</h3>
                   </div>
                 </div>
                 
@@ -443,7 +479,7 @@ const handleRegister = () => {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Best Innovation</h3>
+                    <h3 className="event-title2">Best Innovation</h3>
                   </div>
 
                 
@@ -459,7 +495,7 @@ const handleRegister = () => {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">Best Affinity Group Project Award</h3>
+                    <h3 className="event-title2">Best Affinity Group Project Award</h3>
                   </div>
 
                 
@@ -475,7 +511,7 @@ const handleRegister = () => {
                     />
                   </div>
                   <div className="event-info">
-                    <h3 className="event-title">The DARREL CHONG Student Activity Bronze Award</h3>
+                    <h3 className="event-title2">The DARREL CHONG Student Activity Bronze Award</h3>
                   </div>
 
                 
@@ -485,7 +521,7 @@ const handleRegister = () => {
             </div>
           </section>
 
-<section className="More-detais">
+<section id="contact"  className="More-detais">
   <div className="more-details-content">
     <h2 className="section-title">More Details</h2>
     <p className="description">
@@ -493,6 +529,11 @@ const handleRegister = () => {
     </p>
 
     <div className="contacts-grid">
+       <div className="contact-item">
+        <h3 className="gradient-text">Samudyani Dilakshika</h3>
+           <p>(Vice Chair)</p>
+        <h2>071 994 9884</h2>
+      </div>
       <div className="contact-item">
         <h3 className="gradient-text">Subhani Harshani</h3> 
         <p>(CO-Chair)</p>
@@ -508,11 +549,7 @@ const handleRegister = () => {
            <p>(Program Team Lead)</p>
         <h2>076 325 3332</h2>
       </div>
-      <div className="contact-item">
-        <h3 className="gradient-text">Sanjana Wijesooriya</h3>
-           <p>(Program Team Member)</p>
-        <h2>074 051 3430</h2>
-      </div>
+     
     </div>
   </div>
 </section>
@@ -699,12 +736,14 @@ const handleRegister = () => {
   font-weight: 700;
   color: var(--text-main);
 }
+  
 
 .section-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
   color: var(--text-main);
   margin-bottom: 1rem;
+  
 }
 
 
@@ -1093,29 +1132,83 @@ font-size: 20px;
   
 }
 
-        .timeline-section {
-          padding: 80px 24px;
-        }
+ .timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 40px;
+  column-gap: 20px;
+  padding-inline: 40px;  
+  margin-top: 2rem;
+  
+}
+  .invisible-box {
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+  visibility: hidden;
+}
+  .section-title2{
+  font-size: 36px;
+  text-align: center;
+  padding: 40px;
+  font-weight: 700;
+  color: #111827;
+  }
+ 
+.timeline-box {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  padding: 20px;
+  border-radius: 16px;
+  height: auto; /* allow content to grow */
+  width: 80%;
+  display: flex;
+  flex-direction: column; /* stack title and date */
+  align-items: flex-start; /* align to left or use center if preferred */
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
 
-        .timeline-content {
-          max-width: 1152px;
-          margin: 0 auto;
-          text-align: center;
-        }
 
-        .timeline-card {
-          background: white;
-          border-radius: 16px;
-          padding: 48px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
 
-        .timeline-image {
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-          max-width: 1024px;
-        }
+.timeline-box:hover {
+  transform: translateY(-4px);
+}
+
+.col-1 {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.col-2 {
+  grid-column: 2;
+  justify-self: end;
+}
+
+.event-title {
+  color: white !important;
+  font-size: 1.5rem;
+  align-self: center;
+  margin-bottom: 8px;
+}
+.event-title2{
+  color: #6b7280;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.event-date {
+  color: white !important;
+  align-self: center;
+  padding: 10px 8px;
+  gap: 8px;
+}
+
+
 
         .download-section {
           padding: 80px 24px;
@@ -1212,6 +1305,7 @@ font-size: 20px;
 
         .event-info {
           padding: 24px;
+          
         }
 
         .event-title {
@@ -1257,6 +1351,64 @@ font-size: 20px;
   max-width: 1000px;
 }
  
+@media (max-width: 768px) {
+  .timeline-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-inline: 20px;
+  }
+
+  .col-1,
+  .col-2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .timeline-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+    .invisible-box {
+    display: none !important;
+  }
+
+  .event-title {
+    font-size: 1.25rem;
+    text-align: center;
+  
+  }
+
+  .event-date {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .section-title2 {
+    font-size: 28px;
+    padding: 24px;
+    text-align: center;
+    width: 100%;
+  }
+ 
+  .timeline-line,
+  .timeline-dot,
+  .timeline-connector {
+    display: none !important;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}
+
 @media (max-width: 600px) {
   .contacts-grid {
     grid-template-columns: 1fr;
@@ -1270,6 +1422,7 @@ font-size: 20px;
   font-weight: 500;
   color: #374151;
 }
+  
 
           
 
@@ -1330,6 +1483,8 @@ font-size: 20px;
   text-decoration: none;  
   transition: transform 0.3s ease-in-out;
 }
+
+
 
 .footer-icon {
   font-size: 2.8rem;
