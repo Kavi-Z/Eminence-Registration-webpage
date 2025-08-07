@@ -38,14 +38,24 @@ const questions = [
   {
     id: 'why',
     title: 'Why Eminence?',
-    content: 'Eminence 5.0 is an engaging event designed to expand students knowledge across diverse domains such as Telecommunication Engineering Electrical Engineering Artificial Intelligence, and more. It provides a vibrant platform for exploring emerging technologies, sharing ideas, and deepening understanding through interactive sessions and activities.'
-  },
+    content: (
+      <>
+    Eminence 5.0 is an inter-university engineering competition organized by the <strong style={{ color: '#7C3AED' }}>Women in Engineering IEEE Student Branch at the University of Ruhuna.</strong>  It includes four technical tasks: <strong style={{ color: '#7C3AED' }}>MATLAB Simulation, AI Model Development, Network Simulation, and an Innovation Challenge.</strong> It also features a preparatory webinar series.
+  </>
+  )},
  
   {
-    id: 'who',
-    title: 'Who can participate?',
-    content: 'Students from all universities and colleges are welcome to participate. Whether you\'re a beginner or an expert, there\'s something for everyone at Eminence 5.0.'
-  },
+  id: 'who',
+  title: 'Who can participate?',
+  content: (
+    <>
+      Undergraduate students from Sri Lankan universities. <br />
+      - Each team can have up to <strong style={{ color: '#7C3AED' }}>4 members from the same university.</strong> <br />
+      - <strong style={{ color: '#7C3AED' }}>The team leader must be female</strong>, and at least<strong style={{ color: '#7C3AED' }}> 50%</strong> of the team members must be <strong style={{ color: '#7C3AED' }}>female</strong>.
+    </>
+  )
+}
+,
    {
     id: 'what',
     title: 'What is the context of Eminence 5.0?',
@@ -54,8 +64,10 @@ const questions = [
   {
     id: 'when',
     title: 'When is the event?',
-    content: 'Eminence 5.0 will be held on 4th week of September. Specific dates and schedule will be announced soon.'
-  }
+    content: (
+      <>
+    Eminence 5.0 main event will be held on <strong style={{ color: '#7C3AED' }}>4th week of September.</strong> Specific dates and schedule will be announced soon.
+  </>)}
 ];
 
 
@@ -306,7 +318,7 @@ const handleRegister = () => {
         Eminence 5.0 is a premier event organized by the&nbsp;
         <span className="gradient-text">WIE Affinity Group of IEEE Student Branch University of Ruhuna. </span> 
         <span className="mid-text">
-          &nbsp;This event brings together innovators, engineers, and tech enthusiasts to celebrate technology, creativity, and excellence.
+          &nbsp;This event is more than just a competition; it is a platform for aspiring engineers to showcase their talent, gain practical experience, and connect with both industry and academia. It encourages innovation, leadership, and inclusivity, with a special focus on empowering female participation in STEM.
         </span>
       </p>
     </div>
