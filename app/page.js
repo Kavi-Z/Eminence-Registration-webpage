@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import { FaFacebook, FaLinkedin } from 'react-icons/fa';
+ 
 
 export function FadeInSection({ children }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -37,7 +38,7 @@ const questions = [
   {
     id: 'why',
     title: 'Why Eminence?',
-    content: 'Eminence 5.0 is an engaging event designed to expand students knowledge across diverse domains such as Telecommunication Engineering, Electrical Engineering, Artificial Intelligence, and more. It provides a vibrant platform for exploring emerging technologies, sharing ideas, and deepening understanding through interactive sessions and activities.'
+    content: 'Eminence 5.0 is an engaging event designed to expand students knowledge across diverse domains such as Telecommunication Engineering Electrical Engineering Artificial Intelligence, and more. It provides a vibrant platform for exploring emerging technologies, sharing ideas, and deepening understanding through interactive sessions and activities.'
   },
  
   {
@@ -65,6 +66,8 @@ const toggleQuestion = (questionId) => {
     [questionId]: !prev[questionId]
   }));
 };
+
+
 
   useEffect(() => {
     if (contentRef.current) {
@@ -290,7 +293,7 @@ const handleRegister = () => {
             </div>
           </section>
 
-<section className="about-eminence">
+<section  className="about-eminence">
   <div className="about-container">
     <div className="about-left">
       <h2 className="left-title">What is Eminence?</h2>
@@ -365,22 +368,22 @@ const handleRegister = () => {
     <h2 className="section-title2">Timeline</h2>
     <div className="timeline-grid">
       {[
-        { title: '01.Awareness Session', date: 'Aug 09' },
+        { title: 'Awareness Session', date: 'Aug 09' },
         {},
         {},
-        { title: '02.Registration Opens', date: 'Aug 12' },
-        { title: '03.Webinar 1 (Packet Tracer)', date: 'Aug 23' },
+        { title: 'Registration Opens', date: 'Aug 12' },
+        { title: 'Webinar 1 (Packet Tracer)', date: 'Aug 23' },
         {},
         {},
-        { title: '04.Webinar 2 (MATLAB)', date: 'Sep 13' },
-        { title: '05.Webinar 3 (AI)', date: 'Sep 3rd week' },
+        { title: 'Webinar 2 (MATLAB)', date: 'Sep 13' },
+        { title: 'Webinar 3 (AI)', date: 'Sep 3rd week' },
         {},
         {},
-        { title: '06.Registration (Competition)', date: 'Sep 3rd week' },
-        { title: '07.Proposals Submissions', date: 'Sep 3rd week' },
+        { title: 'Registration (Competition)', date: 'Sep 3rd week' },
+        { title: 'Proposals Submissions', date: 'Sep 3rd week' },
         {},
         {},
-        { title: '08.Main Event', date: 'Sep 4th week' }
+        { title: 'Main Event', date: 'Sep 4th week' }
       ].map((event, index) => {
         const isVisible = event.title && event.title.trim() !== '';
         return (
@@ -531,22 +534,22 @@ const handleRegister = () => {
     <div className="contacts-grid">
        <div className="contact-item">
         <h3 className="gradient-text">Samudyani Dilakshika</h3>
-           <p>(Vice Chair)</p>
+           <p>(Vice Chair - WIE Affinity Group)</p>
         <h2>071 994 9884</h2>
       </div>
       <div className="contact-item">
         <h3 className="gradient-text">Subhani Harshani</h3> 
-        <p>(CO-Chair)</p>
+        <p>(CO-Chair - Eminence 5.0)</p>
         <h2>077 930 7650</h2>
       </div>
       <div className="contact-item">
         <h3 className="gradient-text">Punsara Sewwandi</h3>
-           <p>(CO-Chair)</p>
+           <p>(CO-Chair - Eminence 5.0)</p>
         <h2>076 296 5008</h2>
       </div>
       <div className="contact-item">
         <h3 className="gradient-text">Thanujaya Thennakoon</h3>
-           <p>(Program Team Lead)</p>
+           <p>(Program Team Lead - Eminence 5.0)</p>
         <h2>076 325 3332</h2>
       </div>
      
