@@ -137,7 +137,7 @@ const toggleQuestion = (questionId) => {
     };
   }, [isMenuOpen]);
 const handleRegister = () => {
-  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdYg7dxU2CpqEHDX826S8LRb_GYwRIFwLBnTlJEYE8Ge-PvjA/viewform?usp=dialog";
+  window.location.href = "https://forms.gle/Mwsdt53JHXtXVVcW8";
 };
 
   if (isLoading) {
