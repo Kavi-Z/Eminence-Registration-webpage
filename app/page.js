@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import { FaFacebook, FaLinkedin } from 'react-icons/fa';
- 
 
 export function FadeInSection({ children }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -40,7 +39,7 @@ const questions = [
     title: 'Why Eminence?',
     content: (
       <>
-    Eminence 5.0 is an inter-university engineering competition organized by the <strong style={{ color: '#7C3AED' }}>Women in Engineering IEEE Student Branch at the University of Ruhuna.</strong>  It includes four technical tasks: <strong style={{ color: '#7C3AED' }}>MATLAB Simulation, AI Model Development, Network Simulation, and an Innovation Challenge.</strong> It also features a preparatory webinar series.
+    Eminence 5.0 is an inter-university engineering competition organized by the <strong style={{ color: '#7C3AED' }}>Women in Engineering IEEE Student Branch at the University of Ruhuna.</strong>  It includes four technical tasks: <strong style={{ color: '#7C3AED' }}>MATLAB Simulation, AI Model Development, Network Simulation, and an Innovation Challenge.</strong>
   </>
   )},
  
@@ -66,7 +65,7 @@ const questions = [
     title: 'When is the event?',
     content: (
       <>
-    Eminence 5.0 main event will be held on <strong style={{ color: '#7C3AED' }}>4th week of September.</strong> Specific dates and schedule will be announced soon.
+    Eminence 5.0 main event will be held on <strong style={{ color: '#7C3AED' }}>1st week of October.</strong> Specific dates and schedule will be announced soon.
   </>)}
 ];
 
@@ -101,13 +100,13 @@ const toggleQuestion = (questionId) => {
       setIsLoading(false);
     }, 2000);
 
-    const targetDate = new Date("2025-08-20T09:00:00");
+    const targetDate = new Date("2025-08-23T09:00:00");
     const timer = setInterval(() => {
       const now = new Date();
       const distance = targetDate - now;
 
       if (distance < 0) {
-        setTimeLeft("⏰ It's time!");
+        setTimeLeft("⏰ Registration Closed");
         clearInterval(timer);
         return;
       }
@@ -360,7 +359,7 @@ const handleRegister = () => {
 
           <section className="countdown-section">
             <div className="countdown-content">
-              <h2 className="section-title">Event Countdown</h2>
+              <h2 className="section-title">Registration Countdown</h2>
               <div className="countdown-card">
               <div className="countdown-timer-wrapper">
   <div className="countdown-display">{timeLeft}</div>
@@ -383,7 +382,7 @@ const handleRegister = () => {
         { title: 'Awareness Session', date: 'Aug 09' },
         {},
         {},
-        { title: 'Registration Opens', date: 'Aug 12' },
+        { title: 'Registration Opens', date: 'Aug 11' },
         { title: 'Webinar 1 (Packet Tracer)', date: 'Aug 23' },
         {},
         {},
@@ -395,7 +394,7 @@ const handleRegister = () => {
         { title: 'Proposals Submissions', date: 'Sep 3rd week' },
         {},
         {},
-        { title: 'Main Event', date: 'Sep 4th week' }
+        { title: 'Main Event', date: 'Oct 1st week' }
       ].map((event, index) => {
         const isVisible = event.title && event.title.trim() !== '';
         return (
@@ -422,7 +421,7 @@ const handleRegister = () => {
 
 
 
-          <section className="download-section">
+          {/* <section className="download-section">
             <div className="download-content">
               <h2 className="section-title-alt">Get the Details</h2>
               <p className="download-description">
@@ -440,7 +439,7 @@ const handleRegister = () => {
 </a>
 
             </div>
-          </section>
+          </section> */}
 
           <section id="history" className="events-section">
             <div className="events-content">
