@@ -38,9 +38,36 @@ const questions = [
     id: 'why',
     title: 'Why Eminence?',
     content: (
-      <>
-    Eminence 5.0 is an inter-university engineering competition organized by the <strong style={{ color: '#7C3AED' }}>Women in Engineering IEEE Student Branch at the University of Ruhuna.</strong>  It includes four technical tasks: <strong style={{ color: '#7C3AED' }}>MATLAB Simulation, AI Model Development, Network Simulation, and an Innovation Challenge.</strong>
-  </>
+     <div>
+  <p style={{ textAlign: "center" }}>
+    Eminence 5.0 is an inter-university engineering competition organized by the{" "}
+    <strong style={{ color: "#7C3AED" }}>
+      Women in Engineering IEEE Student Branch at the University of Ruhuna.
+    </strong>
+    {" "}It includes four technical tasks,
+  </p>
+
+  <div style={{ 
+    marginTop: "0.5rem", 
+    display: "flex", 
+    flexDirection: "column", 
+    alignItems: "center",    
+    gap: "0.2rem"          
+  }}>
+    {[
+      "MATLAB Simulation",
+      "AI Model Development",
+      "Network Simulation",
+      "Innovation Challenge",
+    ].map((task, index) => (
+      <div key={index} style={{ display: "flex", gap: "0.3rem", justifyContent: "center" }}>
+        <span style={{ fontWeight: "bold", color: "#7C3AED" }}>{index + 1}.</span>
+        <span style={{ fontWeight: "bold", color: "#7C3AED" }}>{task}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
   )},
  
   {
@@ -853,7 +880,7 @@ font-size: 20px;
 }
 
 .dropdown-content.open {
-  max-height: 200px;
+  max-height: 300px;
   opacity: 1;
 }
 
