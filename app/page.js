@@ -133,7 +133,7 @@ const toggleQuestion = (questionId) => {
       const distance = targetDate - now;
 
       if (distance < 0) {
-        setTimeLeft("⏰ Registration Closed");
+        setTimeLeft("Registration Open Soon");
         clearInterval(timer);
         return;
       }
