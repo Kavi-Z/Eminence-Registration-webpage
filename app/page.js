@@ -163,7 +163,7 @@ const toggleQuestion = (questionId) => {
     };
   }, [isMenuOpen]);
 const handleRegister = () => {
-  window.location.href = "eminence-registration.vercel.app";
+  window.location.href = "https://eminence-registration.vercel.app";
 };
 
   if (isLoading) {
