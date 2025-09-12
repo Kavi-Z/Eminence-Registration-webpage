@@ -380,6 +380,19 @@ const handleRegister = () => {
 </section>
 
 
+<section className="hurry-up-section">
+  <div className="hurry-up-content">
+    <h2 className="section-title-alte"><strong style={{ color: '#7C3AED' }}>Hurry Up!</strong></h2>
+    <p className="description_head">
+  <strong style={{ color: '#7C3AED' }}>Limited spots are available</strong>, so act now and reserve your place in this journey of innovation and excellence.
+    </p>
+    <button onClick={handleRegister} className="hurry-up-cta-btn">
+      Register Now
+    </button>
+  </div>
+
+
+</section>
 
 
 
@@ -426,7 +439,7 @@ const handleRegister = () => {
         { title: 'Proposals Submissions', date: 'Sep 3rd week' },
         {},
         {},
-        { title: 'Main Event', date: 'Oct 08' }
+        { title: 'Main Event', date: 'Oct 04' }
       ].map((event, index) => {
         const isVisible = event.title && event.title.trim() !== '';
         return (
@@ -727,7 +740,7 @@ const handleRegister = () => {
         :root {
   --bg-light: #f9fafb;
   --text-main: #1f2937;
-  --text-sub: #374151;
+  --text-sub: #1f2937;
   --gradient-start: #6366f1;
   --gradient-end: #a855f7;
   --max-width: 800px;
@@ -755,6 +768,8 @@ const handleRegister = () => {
     font-size: 15px;
     color: #6b7280;
     max-width: 800px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
 .about-container {
@@ -931,6 +946,58 @@ font-size: 20px;
 .dropdown-content.open {
   animation: slideDown 0.4s ease-in-out;
 }
+  .hurry-up-section {
+  background-color: var(--bg-light);
+  padding: var(--padding-section);
+  text-align: center;
+}
+.section-title-alte{
+
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  
+}
+.hurry-up-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-title-alt {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.hurry-up-description {
+  font-size: 18px;
+  color: var(--text-sub);
+  margin-bottom: 24px;
+
+}
+
+
+.hurry-up-cta-btn {
+  background: #7c3aed;
+          color: white;
+          padding: 12px 24px;
+          border: none;
+          border-radius: 9999px;
+          font-weight: 500;
+          font-size: 16px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+        }
+
+        .hurry-up-cta-btn:hover {
+          background: #5b21b6;
+          box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+          transform: translateY(-1px);
+        }
+
 
 @keyframes slideDown {
   from {
