@@ -127,7 +127,7 @@ const toggleQuestion = (questionId) => {
       setIsLoading(false);
     }, 2000);
 
-    const targetDate = new Date("2025-08-30T09:00:00");
+    const targetDate = new Date("2025-09-30T09:00:00");
     const timer = setInterval(() => {
       const now = new Date();
       const distance = targetDate - now;
@@ -163,7 +163,7 @@ const toggleQuestion = (questionId) => {
     };
   }, [isMenuOpen]);
 const handleRegister = () => {
-  window.location.href = "https://forms.gle/Mwsdt53JHXtXVVcW8";
+  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScfXwnYYeBokx9z4GNQaSKQ7GqRW5FlGt-JZbrd1mwU9ihllg/viewform";
 };
 
   if (isLoading) {
@@ -460,8 +460,8 @@ const handleRegister = () => {
                 Download the comprehensive delegate booklet for complete information.
               </p>
            <a 
- href="/booklet/pre-lab%20format.pdf"
-  download="pre-lab format.pdf"
+ href="/booklet/DelegateBooklet.pdf"
+  download="DelegateBooklet.pdf"
   className="download-btn"
 >
   <svg className="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
