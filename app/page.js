@@ -133,7 +133,7 @@ const toggleQuestion = (questionId) => {
       const distance = targetDate - now;
 
       if (distance < 0) {
-        setTimeLeft("Registration Open Soon");
+        setTimeLeft("⏰ Registration Closed");
         clearInterval(timer);
         return;
       }
@@ -163,7 +163,7 @@ const toggleQuestion = (questionId) => {
     };
   }, [isMenuOpen]);
 const handleRegister = () => {
-  window.location.href = "https://eminence-registration.vercel.app";
+  window.location.href = "https://forms.gle/Mwsdt53JHXtXVVcW8";
 };
 
   if (isLoading) {
@@ -426,7 +426,7 @@ const handleRegister = () => {
         { title: 'Proposals Submissions', date: 'Sep 3rd week' },
         {},
         {},
-        { title: 'Main Event', date: 'Oct 1st week' }
+        { title: 'Main Event', date: 'Oct 08' }
       ].map((event, index) => {
         const isVisible = event.title && event.title.trim() !== '';
         return (
@@ -453,7 +453,7 @@ const handleRegister = () => {
 
 
 
-          {/* <section className="download-section">
+          <section className="download-section">
             <div className="download-content">
               <h2 className="section-title-alt">Get the Details</h2>
               <p className="download-description">
@@ -471,7 +471,7 @@ const handleRegister = () => {
 </a>
 
             </div>
-          </section> */}
+          </section>
 
           <section id="history" className="events-section">
             <div className="events-content">
