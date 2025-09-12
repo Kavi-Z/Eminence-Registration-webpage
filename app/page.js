@@ -92,7 +92,7 @@ const questions = [
     title: 'When is the event?',
     content: (
       <>
-    Eminence 5.0 main event will be held on <strong style={{ color: '#7C3AED' }}>1st week of October.</strong> Specific dates and schedule will be announced soon.
+    Eminence 5.0 main event will be held on <strong style={{ color: '#7C3AED' }}>4th of October.</strong> Specific dates and schedule will be announced soon.
   </>)}
 ];
 
