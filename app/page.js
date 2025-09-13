@@ -384,7 +384,7 @@ const handleRegister = () => {
   <div className="hurry-up-content">
     <h2 className="section-title-alte"><strong style={{ color: '#7C3AED' }}>Hurry Up!</strong></h2>
     <p className="description_head">
-  <strong style={{ color: '#7C3AED' }}>Limited spots are available</strong>, so act now and reserve your place in this journey of innovation and excellence.
+  <strong style={{ color: '#7C3AED' }}>Limited spots are available</strong>, so act now and reserve your place in this journey of innovation and excellence.<strong style={{ color: '#7C3AED' }}>Once the available slots are filled we will be closing registrations early.</strong>
     </p>
     <button onClick={handleRegister} className="hurry-up-cta-btn">
       Register Now
