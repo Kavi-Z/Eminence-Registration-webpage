@@ -127,7 +127,7 @@ const toggleQuestion = (questionId) => {
       setIsLoading(false);
     }, 2000);
 
-    const targetDate = new Date("2025-09-27T09:00:00");
+    const targetDate = new Date("2025-09-27T23:59:00");
     const timer = setInterval(() => {
       const now = new Date();
       const distance = targetDate - now;
